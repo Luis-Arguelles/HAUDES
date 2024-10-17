@@ -5,5 +5,9 @@ const addStudentService = ({student_name, student_class, parent_name, parent_ema
         [student_name, student_class, parent_name, parent_email]);
 }
 
+const getAllEmailsService = async () => {
+    return await db.query("SELECT parent_email FROM students");
+}
 
-module.exports = {addStudentService};
+
+module.exports = { addStudentService, getAllEmailsService };
