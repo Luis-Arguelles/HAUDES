@@ -1,11 +1,11 @@
 const express = require("express");
-const db = require("./db");
-
+const cors = require("cors");
 const { addStudent, getAllEmails } = require("./controllers/student");
 
 const app = express();
 
 app.use(express.json()); // For parsing application/json
+app.use(cors());
 //app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 app.get('/students/emails', getAllEmails);

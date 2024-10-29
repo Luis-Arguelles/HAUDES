@@ -12,8 +12,8 @@ const addStudent = async (req, res) => {
 
 const getAllEmails = async (req, res) => {
     try{
-        const emails = await getAllEmailsService();
-        res.status(200).json(emails[0]);
+        const response = await getAllEmailsService();
+        res.status(200).json(response[0]);
     } catch (error) {
         res.status(500).json(console.error(error));
     }

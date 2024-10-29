@@ -9,5 +9,4 @@ const db = mysql.createPool({
     port: process.env.DATABASE_PORT
 })
 
-
 module.exports = db;
