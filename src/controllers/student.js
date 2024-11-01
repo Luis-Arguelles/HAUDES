@@ -1,4 +1,4 @@
-const { addStudentService, getAllEmailsService } = require("../services/student");
+const { addStudentService, getAllEmailsService, getAllControlNumbersService, getAllClassesService, getAllFullNamesService } = require("../services/student");
 
 const addStudent = async (req, res) => {
     try{
@@ -19,5 +19,34 @@ const getAllEmails = async (req, res) => {
     }
 };
 
+const getStudentsInfo = async (req, res) =>{
+    try{
+        const controlNumberResponse = await getAllControlNumbersService();
+        const classResponse = await getAllClassesService();
+        const fullNameResponse = await getAllFullNamesService();
+        let fullNames = [];
+        let fullNameString  = "";
 
-module.exports = { addStudent, getAllEmails };
+        fullNameResponse[0].map(fields => {
+            for(let field in fields){
+                if (field !== "MATERNO") fullNameString += fields[field] + " ";
+                else fullNameString += fields[field];
+            }
+            fullNames.push(fullNameString);
+            fullNameString = "";
+        }
+        )
+
+        const info = {
+            controlNumbers: controlNumberResponse[0],
+            classes: classResponse[0],
+            fullNames
+        }
+
+        res.status(200).json(info);
+    } catch (error) {
+        res.status(500).json(console.error(error));
+    }
+}
+
+module.exports = { addStudent, getAllEmails, getStudentsInfo };
