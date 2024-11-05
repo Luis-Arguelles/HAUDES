@@ -2,8 +2,8 @@ const { addStudentService, getAllEmailsService, getAllControlNumbersService, get
 
 const addStudent = async (req, res) => {
     try{
-        const { student_name, student_class, parent_name, parent_email } = req.body;
-        const student = await addStudentService({ student_name, student_class, parent_name, parent_email });
+        const { CARRERA, TURNO, SEMESTRE, GRUPO_ACTUAL, NO_CONTROL, NOMBRE, PATERNO, MATERNO, CURP, SEXO, FECHA_NAC, CUENTA_GOOGLE } = req.body;
+        const student = await addStudentService({ CARRERA, TURNO, SEMESTRE, GRUPO_ACTUAL, NO_CONTROL, NOMBRE, PATERNO, MATERNO, CURP, SEXO, FECHA_NAC, CUENTA_GOOGLE });
         res.status(201).json({message: `El nuevo estudiante ha sido agregado`});
     } catch (error) {
         res.status(500).json(console.error(error));

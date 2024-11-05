@@ -16,9 +16,9 @@ const getAllFullNamesService = async () => {
     return await db.query("SELECT NOMBRE, PATERNO, MATERNO FROM alumnos");
 };
 
-const addStudentService = ({student_name, student_class, parent_name, parent_email}) => {
-    return db.query("INSERT INTO students (student_name, student_class, parent_name, parent_email) VALUES (?, ?, ?, ?)",
-        [student_name, student_class, parent_name, parent_email]);
+const addStudentService = ({ CARRERA, TURNO, SEMESTRE, GRUPO_ACTUAL, NO_CONTROL, NOMBRE, PATERNO, MATERNO, CURP, SEXO, FECHA_NAC, CUENTA_GOOGLE }) => {
+    return db.query("INSERT INTO alumnos (CARRERA, TURNO, SEMESTRE, GRUPO_ACTUAL, NO_CONTROL, NOMBRE, PATERNO, MATERNO, CURP, SEXO, FECHA_NAC, CUENTA_GOOGLE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [CARRERA, TURNO, SEMESTRE, GRUPO_ACTUAL, NO_CONTROL, NOMBRE, PATERNO, MATERNO, CURP, SEXO, FECHA_NAC, CUENTA_GOOGLE]);
 }
 
 module.exports = { addStudentService, getAllEmailsService, getAllControlNumbersService, getAllClassesService, getAllFullNamesService };
