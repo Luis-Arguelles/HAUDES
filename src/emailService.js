@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: process.env.EMAIL_USER, // Tu dirección de correo
-    pass: process.env.EMAIL_PASS  // Tu contraseña de correo o app password
+    pass: process.env.EMAIL_PASSWORD // Tu contraseña de correo o app password
   }
 });
 
